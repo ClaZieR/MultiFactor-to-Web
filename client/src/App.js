@@ -6,15 +6,26 @@ import { useState } from 'react';
 
 function App() {
 
-
+  
   const [output, setOutput] = useState("")
   const getitfrombackent = () => {
-    const url = "http://localhost:8080/";
-    axios.get(url).then((response) => {
+
+    const option = {
+
+      method: 'GET',
+      url: 'http://localhost:8080/',
+      params: { apikey: '1b6b8a9a3e28b905b19f49f9b693b7fd1c8ec9288' },
+    }
+
+    axios.request(option).then(function (response) {
+      console.log(response.data);
       setOutput(response.data)
+    }).catch(function (error) {
+      console.error(error);
     });
   }
 
+  
   return (
     <div className="App">
       <header className="App-header">
