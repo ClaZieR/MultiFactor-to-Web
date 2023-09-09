@@ -8,13 +8,19 @@ function App() {
 
   
   const [output, setOutput] = useState("")
+  const [apikey, setApikey] = useState("")
+  
+  function handle(event){
+    setApikey(event.target.value)
+  }
+
   const getitfrombackent = () => {
 
     const option = {
 
       method: 'GET',
       url: 'http://localhost:8080/',
-      params: { apikey: '1b6b8a9a3e28b905b19f49f9b693b7fd1c8ec9288' },
+      params: { apikey: apikey },
     }
 
     axios.request(option).then(function (response) {
@@ -30,6 +36,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h1>Welcome to 2stepREP</h1>
+        <input type="text" placeholder="Enter API Key" onChange={handle}></input>
         <button onClick={getitfrombackent}>Get it from backend</button>
         <h1>{output}</h1>
       </header>
