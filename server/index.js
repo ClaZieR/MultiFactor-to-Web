@@ -22,7 +22,7 @@ app.get('/', (req, res) => {
     pythonProcess.stdout.on('data', (data) => {
        const staus = data.toString().split('"status"')[1].split('"')[1]
         console.log(staus)
-       if(staus === "1"){
+       if(staus === "0"){
 
         const pythonProcess = spawn.spawn('python',['mailfetch.py']);
         pythonProcess.stdout.on('data', (data) => {
@@ -35,6 +35,9 @@ app.get('/', (req, res) => {
         pythonProcess.on('close', (code) => {
             console.log(`child process close all stdio with code ${code}`);
         });
+        }
+        else if(staus === "2"){
+            res.send("Key is Already been used")
         }
         else{
             res.send("Invalid API Key")

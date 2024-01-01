@@ -4,11 +4,11 @@ import sys
 
 # Define the data as a dictionary
 data = {
-    "ackey": str(sys.argv[1]), 
+    "ackey": "a6ce382434921ba11aas9f868b5e145483598cd5c", 
 }
 
 # Define the URL where you want to send the POST request
-url = "https://buycheapplaycheap.com/steam-fetch.php"  # Replace with the actual URL
+url = "https://buycheapplaycheap.com/EAAUTH2.php"  
 
 # Send a POST request with the data
 try:
